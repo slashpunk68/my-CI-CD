@@ -1,0 +1,22 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Запускать пайплайн при пуше в ветку main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Используем последнюю версию Ubuntu
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3  # Клонируем репозиторий
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'  # Указываем версию Python
+
+      - name: Run script
+        run: python main.py  # Запускаем наш скрипт
